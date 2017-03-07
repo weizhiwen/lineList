@@ -8,11 +8,18 @@
 int main()
 {
 	NodeSList *L;
-	initNode(&L);
+	int n = 0;
+	//测试创建链表函数
+	printf("请输入n=");
+	scanf_s("%d", &n);
+	createNode(&L, n);
+	printNodeList(L);
+	printf("\n");
+
 	//测试插入函数
 	insertNode(L, 1, 11);
 	insertNode(L, 1, 22);
-	insertNode(L, 2, 33);
+	insertNode(L, 6, 33);
 	printNodeList(L);
 	printf("\n");
 

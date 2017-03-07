@@ -10,7 +10,7 @@ typedef struct NodeSList
 }NodeSList, *pList;
 
 //链式结构线性表初始化头节点
-bool initNode(NodeSList **L)
+bool createNode(NodeSList **L, int n)
 {
 	*L = (NodeSList *)malloc(sizeof(NodeSList));
 	if (!*L)
@@ -18,8 +18,19 @@ bool initNode(NodeSList **L)
 		printf("单链表头节点初始化失败\a\n");
 		return 0;
 	}
-	(*L)->data = 0;
+	(*L)->data = n; //用来记录链式表的长度
 	(*L)->next = NULL;
+	printf("请插入创建%d个链表的初始值\n", n);
+	pList p = (*L); //指向第一个真实的节点
+	pList q;
+	for (int i = 0; i < n; i++)
+	{
+		q = (NodeSList *)malloc(sizeof(NodeSList));
+		scanf_s("%d", &q->data);
+		p->next = q;
+		p = q;
+		q->next = NULL;
+	}
 	return 1;
 }
 
